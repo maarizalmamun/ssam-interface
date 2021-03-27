@@ -18,7 +18,7 @@ import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetai
 import ShieldText from '../../components/ShieldText'
 import BetterTradeLink, { DefaultVersionLink } from '../../components/swap/BetterTradeLink'
 import confirmPriceImpactWithoutFee from '../../components/swap/confirmPriceImpactWithoutFee'
-import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper} from '../../components/swap/styleds'
+import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper } from '../../components/swap/styleds'
 import TradePrice from '../../components/swap/TradePrice'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
@@ -128,7 +128,7 @@ export default function Swap() {
         [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
       }
 
-  const {onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
+  const { onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
   const isValid = !swapInputError
   const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
 
@@ -322,7 +322,7 @@ export default function Swap() {
           <AutoColumn gap={'md'}>
             <CurrencyInputPanel
               //label={independentField === Field.OUTPUT && !showWrap && trade ? 'From (estimated)' : 'From'}
-              label = {'Stake amount'}
+              label={'Stake amount'}
               value={formattedAmounts[Field.INPUT]}
               showMaxButton={!atMaxAmountInput}
               currency={currencies[Field.INPUT]}
@@ -354,7 +354,7 @@ export default function Swap() {
               value={formattedAmounts[Field.OUTPUT]}
               onUserInput={handleTypeOutput}
               //label={independentField === Field.INPUT && !showWrap && trade ? 'To (estimated)' : 'To'}
-              label = {'You will receive'}
+              label={'You will receive'}
               showMaxButton={false}
               currency={currencies[Field.OUTPUT]}
               onCurrencySelect={handleOutputSelect}
@@ -498,10 +498,10 @@ export default function Swap() {
               </ButtonError>
             )}
             <RowBetween>
-              <ShieldText text= {"Safe Staking: Covered by Unslashed Finance"}/>
+              <ShieldText text={'Safe Staking: Covered by Unslashed Finance'} />
             </RowBetween>
             <RowBetween>
-              <ShieldText text= {"Lowest Fee Guarantee"}/>
+              <ShieldText text={'Lowest Fee Guarantee'} />
             </RowBetween>
 
             {showApproveFlow && (
@@ -524,9 +524,9 @@ export default function Swap() {
         <UnsupportedCurrencyFooter show={swapIsUnsupported} currencies={[currencies.INPUT, currencies.OUTPUT]} />
       )}
       <AppBody>
-      <Wrapper>
-        <FAQ />
-      </Wrapper>
+        <Wrapper>
+          <FAQ />
+        </Wrapper>
       </AppBody>
     </>
   )

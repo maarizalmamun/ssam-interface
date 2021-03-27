@@ -54,7 +54,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
             </TYPE.black>
             <QuestionHelper text="This is the fee paid to the Ethereum network for staking ETH." />
           </RowFixed>
-          {true ? "$36.79" : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
+          {true ? '$36.79' : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
         </RowBetween>
 
         <RowBetween>
@@ -104,10 +104,7 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
           )}
           {!showRoute && (
             <AutoColumn style={{ padding: '12px 16px 0 16px' }}>
-              <InfoLink
-                href={'https://www.ssam.app/'}
-                target="_blank"
-              >
+              <InfoLink href={'https://www.ssam.app/'} target="_blank">
                 View on Etherscan ↗
               </InfoLink>
             </AutoColumn>

@@ -86,7 +86,7 @@ export function colors(darkMode: boolean): Colors {
     //Darkmode
     //1: #60A9DE
     //2: #78B7E8 (slightly top left of primary 1 blue) or b8d4ef
-    //3: #b8d4ef or #deeaf7 
+    //3: #b8d4ef or #deeaf7
     /*  or 
     Original primary
     primary1: darkMode ? '#2172E5' : '#ff007a',

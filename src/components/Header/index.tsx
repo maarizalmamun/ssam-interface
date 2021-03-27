@@ -11,7 +11,7 @@ import Logo from '../../assets/svg/logo.svg'
 import LogoDark from '../../assets/svg/logo_white.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
-import { useETHBalances} from '../../state/wallet/hooks'
+import { useETHBalances } from '../../state/wallet/hooks'
 //import { CardNoise } from '../earn/styled'
 //import { CountUp } from 'use-count-up'
 import { ExternalLink } from '../../theme'
@@ -336,7 +336,7 @@ export default function Header() {
               <NetworkCard title={NETWORK_LABELS[chainId]}>{NETWORK_LABELS[chainId]}</NetworkCard>
             )}
           </HideSmall>
-  
+
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>

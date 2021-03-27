@@ -93,7 +93,7 @@ export default function SwapModalFooter({
             </TYPE.black>
             <QuestionHelper text="This is the fee paid to the Ethereum network for staking ETH." />
           </RowFixed>
-          {true? "$36.79" : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
+          {true ? '$36.79' : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
         </RowBetween>
         <RowBetween>
           <RowFixed>
@@ -102,9 +102,7 @@ export default function SwapModalFooter({
             </TYPE.black>
             <QuestionHelper text="This fee is split between node operators, the DAO, and an insurance fund." />
           </RowFixed>
-          <TYPE.black fontSize={14}>
-            {realizedLPFee ? `10%`:`10%`}
-          </TYPE.black>
+          <TYPE.black fontSize={14}>{realizedLPFee ? `10%` : `10%`}</TYPE.black>
         </RowBetween>
       </AutoColumn>
 
