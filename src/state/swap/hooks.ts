@@ -13,7 +13,7 @@ import useParsedQueryString from '../../hooks/useParsedQueryString'
 import { isAddress } from '../../utils'
 import { AppDispatch, AppState } from '../index'
 import { useCurrencyBalances } from '../wallet/hooks'
-import { Field, replaceSwapState, selectCurrency, setRecipient, switchCurrencies, typeInput } from './actions'
+import { Field, replaceSwapState, selectCurrency, setRecipient, typeInput } from './actions'
 import { SwapState } from './reducer'
 import useToggledVersion from '../../hooks/useToggledVersion'
 import { useUserSlippageTolerance } from '../user/hooks'
@@ -25,7 +25,6 @@ export function useSwapState(): AppState['swap'] {
 
 export function useSwapActionHandlers(): {
   onCurrencySelection: (field: Field, currency: Currency) => void
-  onSwitchTokens: () => void
   onUserInput: (field: Field, typedValue: string) => void
   onChangeRecipient: (recipient: string | null) => void
 } {
@@ -42,10 +41,6 @@ export function useSwapActionHandlers(): {
     [dispatch]
   )
 
-  const onSwitchTokens = useCallback(() => {
-    dispatch(switchCurrencies())
-  }, [dispatch])
-
   const onUserInput = useCallback(
     (field: Field, typedValue: string) => {
       dispatch(typeInput({ field, typedValue }))
@@ -61,7 +56,6 @@ export function useSwapActionHandlers(): {
   )
 
   return {
-    onSwitchTokens,
     onCurrencySelection,
     onUserInput,
     onChangeRecipient

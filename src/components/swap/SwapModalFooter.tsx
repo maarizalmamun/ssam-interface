@@ -69,9 +69,9 @@ export default function SwapModalFooter({
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              {trade.tradeType === TradeType.EXACT_INPUT ? 'Minimum received' : 'Maximum sold'}
+              {'Exchange Rate'}
             </TYPE.black>
-            <QuestionHelper text="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed." />
+            <QuestionHelper text="Upon transaction you will recieve smETH in a 1:1 ratio to your staked ETH." />
           </RowFixed>
           <RowFixed>
             <TYPE.black fontSize={14}>
@@ -89,21 +89,21 @@ export default function SwapModalFooter({
         <RowBetween>
           <RowFixed>
             <TYPE.black color={theme.text2} fontSize={14} fontWeight={400}>
-              Price Impact
+              Transaction Fee
             </TYPE.black>
-            <QuestionHelper text="The difference between the market price and your price due to trade size." />
+            <QuestionHelper text="This is the fee paid to the Ethereum network for staking ETH." />
           </RowFixed>
-          <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />
+          {true? "$36.79" : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
         </RowBetween>
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              Liquidity Provider Fee
+              Staking Rewards Fee
             </TYPE.black>
-            <QuestionHelper text="A portion of each trade (0.30%) goes to liquidity providers as a protocol incentive." />
+            <QuestionHelper text="This fee is split between node operators, the DAO, and an insurance fund." />
           </RowFixed>
           <TYPE.black fontSize={14}>
-            {realizedLPFee ? realizedLPFee?.toSignificant(6) + ' ' + trade.inputAmount.currency.symbol : '-'}
+            {realizedLPFee ? `10%`:`10%`}
           </TYPE.black>
         </RowBetween>
       </AutoColumn>
@@ -117,7 +117,7 @@ export default function SwapModalFooter({
           id="confirm-swap-or-send"
         >
           <Text fontSize={20} fontWeight={500}>
-            {severity > 2 ? 'Swap Anyway' : 'Confirm Swap'}
+            {severity > 2 ? 'Stake Anyway' : 'Confirm Stake'}
           </Text>
         </ButtonError>
 

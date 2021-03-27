@@ -10,12 +10,15 @@ import Card, { GreyCard } from '../../components/Card'
 import Column, { AutoColumn } from '../../components/Column'
 import ConfirmSwapModal from '../../components/swap/ConfirmSwapModal'
 import CurrencyInputPanel from '../../components/CurrencyInputPanel'
+import CurrencyOutputPanel from '../../components/CurrencyOutputPanel'
+import FAQ from '../../components/FAQ'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 import { AutoRow, RowBetween } from '../../components/Row'
 import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
+import ShieldText from '../../components/ShieldText'
 import BetterTradeLink, { DefaultVersionLink } from '../../components/swap/BetterTradeLink'
 import confirmPriceImpactWithoutFee from '../../components/swap/confirmPriceImpactWithoutFee'
-import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper } from '../../components/swap/styleds'
+import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper} from '../../components/swap/styleds'
 import TradePrice from '../../components/swap/TradePrice'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
@@ -125,7 +128,7 @@ export default function Swap() {
         [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
       }
 
-  const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
+  const {onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
   const isValid = !swapInputError
   const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
 
@@ -318,7 +321,8 @@ export default function Swap() {
 
           <AutoColumn gap={'md'}>
             <CurrencyInputPanel
-              label={independentField === Field.OUTPUT && !showWrap && trade ? 'From (estimated)' : 'From'}
+              //label={independentField === Field.OUTPUT && !showWrap && trade ? 'From (estimated)' : 'From'}
+              label = {'Stake amount'}
               value={formattedAmounts[Field.INPUT]}
               showMaxButton={!atMaxAmountInput}
               currency={currencies[Field.INPUT]}
@@ -335,7 +339,6 @@ export default function Swap() {
                     size="16"
                     onClick={() => {
                       setApprovalSubmitted(false) // reset 2 step UI for approvals
-                      onSwitchTokens()
                     }}
                     color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? theme.primary1 : theme.text2}
                   />
@@ -347,10 +350,11 @@ export default function Swap() {
                 ) : null}
               </AutoRow>
             </AutoColumn>
-            <CurrencyInputPanel
+            <CurrencyOutputPanel
               value={formattedAmounts[Field.OUTPUT]}
               onUserInput={handleTypeOutput}
-              label={independentField === Field.INPUT && !showWrap && trade ? 'To (estimated)' : 'To'}
+              //label={independentField === Field.INPUT && !showWrap && trade ? 'To (estimated)' : 'To'}
+              label = {'You will receive'}
               showMaxButton={false}
               currency={currencies[Field.OUTPUT]}
               onCurrencySelect={handleOutputSelect}
@@ -489,10 +493,17 @@ export default function Swap() {
                     ? swapInputError
                     : priceImpactSeverity > 3 && !isExpertMode
                     ? `Price Impact Too High`
-                    : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                    : `Stake${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
                 </Text>
               </ButtonError>
             )}
+            <RowBetween>
+              <ShieldText text= {"Safe Staking: Covered by Unslashed Finance"}/>
+            </RowBetween>
+            <RowBetween>
+              <ShieldText text= {"Lowest Fee Guarantee"}/>
+            </RowBetween>
+
             {showApproveFlow && (
               <Column style={{ marginTop: '1rem' }}>
                 <ProgressSteps steps={[approval === ApprovalState.APPROVED]} />
@@ -512,6 +523,11 @@ export default function Swap() {
       ) : (
         <UnsupportedCurrencyFooter show={swapIsUnsupported} currencies={[currencies.INPUT, currencies.OUTPUT]} />
       )}
+      <AppBody>
+      <Wrapper>
+        <FAQ />
+      </Wrapper>
+      </AppBody>
     </>
   )
 }

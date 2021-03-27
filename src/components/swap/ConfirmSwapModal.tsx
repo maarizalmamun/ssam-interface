@@ -77,17 +77,21 @@ export default function ConfirmSwapModal({
   }, [allowedSlippage, onConfirm, showAcceptChanges, swapErrorMessage, trade])
 
   // text to show while loading
+  const pendingText = `Staking ${trade?.inputAmount?.toSignificant(6)} ETH. You will receive ${trade?.outputAmount?.toSignificant(6)}
+   smETH`
+  /*
+  ORIGINAL
   const pendingText = `Swapping ${trade?.inputAmount?.toSignificant(6)} ${
     trade?.inputAmount?.currency?.symbol
   } for ${trade?.outputAmount?.toSignificant(6)} ${trade?.outputAmount?.currency?.symbol}`
-
+  */
   const confirmationContent = useCallback(
     () =>
       swapErrorMessage ? (
         <TransactionErrorContent onDismiss={onDismiss} message={swapErrorMessage} />
       ) : (
         <ConfirmationModalContent
-          title="Confirm Swap"
+          title="Confirm Stake"
           onDismiss={onDismiss}
           topContent={modalHeader}
           bottomContent={modalBottom}

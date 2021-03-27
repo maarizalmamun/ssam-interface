@@ -125,6 +125,9 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@uniswap/default-token-list": "^2.0.0"
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@uniswap/default-token-list": "^2.0.0",
+    "web3-react": "^5.0.5"
   }
 }

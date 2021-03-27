@@ -33,9 +33,9 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              {isExactIn ? 'Minimum received' : 'Maximum sold'}
+              {'Exchange Rate'}
             </TYPE.black>
-            <QuestionHelper text="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed." />
+            <QuestionHelper text="Upon transaction you will recieve smETH in a 1:1 ratio to your staked ETH." />
           </RowFixed>
           <RowFixed>
             <TYPE.black color={theme.text1} fontSize={14}>
@@ -50,22 +50,22 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              Price Impact
+              Transaction Fee
             </TYPE.black>
-            <QuestionHelper text="The difference between the market price and estimated price due to trade size." />
+            <QuestionHelper text="This is the fee paid to the Ethereum network for staking ETH." />
           </RowFixed>
-          <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />
+          {true ? "$36.79" : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
         </RowBetween>
 
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              Liquidity Provider Fee
+              Staking Rewards Fee
             </TYPE.black>
-            <QuestionHelper text="A portion of each trade (0.30%) goes to liquidity providers as a protocol incentive." />
+            <QuestionHelper text="This fee is split between node operators, the DAO, and an insurance fund." />
           </RowFixed>
           <TYPE.black fontSize={14} color={theme.text1}>
-            {realizedLPFee ? `${realizedLPFee.toSignificant(4)} ${trade.inputAmount.currency.symbol}` : '-'}
+            {realizedLPFee ? `10%` : `10%`}
           </TYPE.black>
         </RowBetween>
       </AutoColumn>
@@ -105,10 +105,10 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
           {!showRoute && (
             <AutoColumn style={{ padding: '12px 16px 0 16px' }}>
               <InfoLink
-                href={'https://uniswap.info/pair/' + trade.route.pairs[0].liquidityToken.address}
+                href={'https://www.ssam.app/'}
                 target="_blank"
               >
-                View pair analytics ↗
+                View on Etherscan ↗
               </InfoLink>
             </AutoColumn>
           )}

@@ -141,7 +141,7 @@ export default function CurrencyInputPanel({
   label = 'Input',
   onCurrencySelect,
   currency,
-  disableCurrencySelect = false,
+  disableCurrencySelect = true,
   hideBalance = false,
   pair = null, // used for double token logo
   hideInput = false,

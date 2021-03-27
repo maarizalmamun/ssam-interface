@@ -23,6 +23,23 @@ export const ArrowWrapper = styled.div<{ clickable: boolean }>`
         `
       : null}
 `
+export const BadgeDiv = styled.div`
+    display: 'inline-flex';
+    justifyContent: 'center';
+    padding: '9px 16px';
+    alignItems: 'center';
+    height: '30px';
+    margin: '32px auto 0 auto';
+    borderRadius: '40px';
+    background: 'rgba(97, 183, 95, 0.1)';
+`;
+
+export const BadgeP = styled.p`
+    color: '#61B75F';
+    fontSize: '12px';
+    fontWeight: 500;
+    marginLeft: '6px';
+`;
 
 export const SectionBreak = styled.div`
   height: 1px;

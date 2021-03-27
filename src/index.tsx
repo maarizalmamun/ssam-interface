@@ -1,5 +1,6 @@
 import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core'
 import 'inter-ui'
+//import 'Mali' from 'https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Roboto&display=swap'
 import React, { StrictMode } from 'react'
 import { isMobile } from 'react-device-detect'
 import ReactDOM from 'react-dom'
