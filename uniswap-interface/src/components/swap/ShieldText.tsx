@@ -1,0 +1,30 @@
+import React from 'react'
+import styled from 'styled-components'
+import {ReactComponent as ShieldIcon} from '../../assets/svg/shield.svg'
+
+const BadgeDiv = styled.div`
+    display: 'inline-flex';
+    justifyContent: 'center';
+    padding: '9px 16px';
+    alignItems: 'center';
+    height: '30px';
+    margin: '32px auto 0 auto';
+    borderRadius: '40px';
+    background: 'rgba(97, 183, 95, 0.1)';
+`
+
+const BadgeP = styled.p`
+    color: '#61B75F';
+    fontSize: '12px';
+    fontWeight: 500;
+    marginLeft: '6px';
+`
+
+export default function ShieldText() {
+  return (
+    <BadgeDiv>
+        <ShieldIcon />
+        <BadgeP>Safe staking with ssam </BadgeP>
+    </BadgeDiv>
+  )
+}
