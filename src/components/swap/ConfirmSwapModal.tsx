@@ -77,7 +77,9 @@ export default function ConfirmSwapModal({
   }, [allowedSlippage, onConfirm, showAcceptChanges, swapErrorMessage, trade])
 
   // text to show while loading
-  const pendingText = `Staking ${trade?.inputAmount?.toSignificant(6)} ETH. You will receive ${trade?.outputAmount?.toSignificant(6)}
+  const pendingText = `Staking ${trade?.inputAmount?.toSignificant(
+    6
+  )} ETH. You will receive ${trade?.outputAmount?.toSignificant(6)}
    smETH`
   /*
   ORIGINAL

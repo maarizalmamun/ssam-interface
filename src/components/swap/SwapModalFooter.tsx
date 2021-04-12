@@ -66,6 +66,7 @@ export default function SwapModalFooter({
           </RowFixed>
         </RowBetween>
         <RowBetween>
+<<<<<<< HEAD
         <TYPE.black fontSize={12}>
               {"0xa5e7f4a06080b860d376871ce0798aa7677e7a4b117a5bd0909"}
         </TYPE.black>
@@ -74,6 +75,15 @@ export default function SwapModalFooter({
           <TYPE.black fontSize={12}>
               {"f15fee02f28a62388496982c133fef1eba087d8a06005"}
           </TYPE.black>
+=======
+          <RowFixed>
+            <TYPE.black color={theme.text2} fontSize={14} fontWeight={400}>
+              Transaction Fee
+            </TYPE.black>
+            <QuestionHelper text="This is the fee paid to the Ethereum network for staking ETH." />
+          </RowFixed>
+          {true ? '$36.79' : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
+>>>>>>> 484415c7e84ccb146065dfef5166a0acd3b5b448
         </RowBetween>
         <RowBetween>
           <RowFixed>
@@ -86,6 +96,10 @@ export default function SwapModalFooter({
               {"ETH (NaN ETH to go"}
             </TYPE.black>
           </RowFixed>
+<<<<<<< HEAD
+=======
+          <TYPE.black fontSize={14}>{realizedLPFee ? `10%` : `10%`}</TYPE.black>
+>>>>>>> 484415c7e84ccb146065dfef5166a0acd3b5b448
         </RowBetween>
       </AutoColumn>
 

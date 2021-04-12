@@ -16,11 +16,15 @@ export default function SwapHeader() {
   return (
     <StyledSwapHeader>
       <RowBetween>
-        <TYPE.black fontWeight={500} fontSize={20}>Stake Ether</TYPE.black>
+        <TYPE.black fontWeight={500} fontSize={20}>
+          Stake Ether
+        </TYPE.black>
         <Settings />
       </RowBetween>
       <RowBetween>
-      <TYPE.body fontWeight={300} fontSize={12}>Stake ETH and receive smETH while staking.</TYPE.body>
+        <TYPE.body fontWeight={300} fontSize={12}>
+          Stake ETH and receive smETH while staking.
+        </TYPE.body>
       </RowBetween>
     </StyledSwapHeader>
   )
