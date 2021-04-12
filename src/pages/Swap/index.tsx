@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from 're
 import { ArrowDown } from 'react-feather'
 import ReactGA from 'react-ga'
 import { Text } from 'rebass'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import AddressInputPanel from '../../components/AddressInputPanel'
 import { ButtonError, ButtonLight, ButtonPrimary, ButtonConfirmed } from '../../components/Button'
 import Card, { GreyCard } from '../../components/Card'
@@ -14,7 +14,7 @@ import CurrencyOutputPanel from '../../components/CurrencyOutputPanel'
 import FAQ from '../../components/FAQ'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 import { AutoRow, RowBetween } from '../../components/Row'
-import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
+//import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
 import ShieldText from '../../components/ShieldText'
 import BetterTradeLink, { DefaultVersionLink } from '../../components/swap/BetterTradeLink'
 import confirmPriceImpactWithoutFee from '../../components/swap/confirmPriceImpactWithoutFee'
@@ -42,7 +42,7 @@ import {
   useSwapState
 } from '../../state/swap/hooks'
 import { useExpertModeManager, useUserSlippageTolerance, useUserSingleHopOnly } from '../../state/user/hooks'
-import { LinkStyledButton, TYPE } from '../../theme'
+import { LinkStyledButton, TYPE, ExternalLink } from '../../theme'
 import { maxAmountSpend } from '../../utils/maxAmountSpend'
 import { computeTradePriceBreakdown, warningSeverity } from '../../utils/prices'
 import AppBody from '../AppBody'
@@ -89,6 +89,15 @@ export default function Swap() {
 
   // get custom setting values for user
   const [allowedSlippage] = useUserSlippageTolerance()
+
+  const InfoLink = styled(ExternalLink)`
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.bg3};
+  padding: 6px 6px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: ${({ theme }) => theme.text1};`
 
   // swap state
   const { independentField, typedValue, recipient } = useSwapState()
@@ -503,7 +512,14 @@ export default function Swap() {
             <RowBetween>
               <ShieldText text= {"Lowest Fee Guarantee"}/>
             </RowBetween>
-
+            <AutoColumn style={{ padding: '12px 16px 0 16px' }}>
+              <InfoLink
+                href={'https://www.ssam.app/'}
+                target="_blank"
+              >
+                View on Etherscan ↗
+              </InfoLink>
+            </AutoColumn>
             {showApproveFlow && (
               <Column style={{ marginTop: '1rem' }}>
                 <ProgressSteps steps={[approval === ApprovalState.APPROVED]} />
@@ -519,10 +535,12 @@ export default function Swap() {
         </Wrapper>
       </AppBody>
       {!swapIsUnsupported ? (
-        <AdvancedSwapDetailsDropdown trade={trade} />
+        null
       ) : (
         <UnsupportedCurrencyFooter show={swapIsUnsupported} currencies={[currencies.INPUT, currencies.OUTPUT]} />
       )}
+      <AutoColumn style={{ padding: '20px' }}>
+      </AutoColumn>
       <AppBody>
       <Wrapper>
         <FAQ />

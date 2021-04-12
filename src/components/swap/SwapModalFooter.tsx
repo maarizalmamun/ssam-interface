@@ -1,21 +1,18 @@
-import { Trade, TradeType } from '@uniswap/sdk'
+import { Trade } from '@uniswap/sdk'
 import React, { useContext, useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
-import { Field } from '../../state/swap/actions'
-import { TYPE } from '../../theme'
+import { TYPE } from 'theme'
+
 import {
-  computeSlippageAdjustedAmounts,
   computeTradePriceBreakdown,
   formatExecutionPrice,
   warningSeverity
 } from '../../utils/prices'
 import { ButtonError } from '../Button'
 import { AutoColumn } from '../Column'
-import QuestionHelper from '../QuestionHelper'
 import { AutoRow, RowBetween, RowFixed } from '../Row'
-import FormattedPriceImpact from './FormattedPriceImpact'
 import { StyledBalanceMaxMini, SwapCallbackError } from './styleds'
 
 export default function SwapModalFooter({
@@ -33,11 +30,7 @@ export default function SwapModalFooter({
 }) {
   const [showInverted, setShowInverted] = useState<boolean>(false)
   const theme = useContext(ThemeContext)
-  const slippageAdjustedAmounts = useMemo(() => computeSlippageAdjustedAmounts(trade, allowedSlippage), [
-    allowedSlippage,
-    trade
-  ])
-  const { priceImpactWithoutFee, realizedLPFee } = useMemo(() => computeTradePriceBreakdown(trade), [trade])
+  const { priceImpactWithoutFee } = useMemo(() => computeTradePriceBreakdown(trade), [trade])
   const severity = warningSeverity(priceImpactWithoutFee)
 
   return (
@@ -65,46 +58,34 @@ export default function SwapModalFooter({
             </StyledBalanceMaxMini>
           </Text>
         </RowBetween>
-
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              {'Exchange Rate'}
+            {'Validator: '}
             </TYPE.black>
-            <QuestionHelper text="Upon transaction you will recieve smETH in a 1:1 ratio to your staked ETH." />
+          </RowFixed>
+        </RowBetween>
+        <RowBetween>
+        <TYPE.black fontSize={12}>
+              {"0xa5e7f4a06080b860d376871ce0798aa7677e7a4b117a5bd0909"}
+        </TYPE.black>
+        </RowBetween>
+        <RowBetween>
+          <TYPE.black fontSize={12}>
+              {"f15fee02f28a62388496982c133fef1eba087d8a06005"}
+          </TYPE.black>
+        </RowBetween>
+        <RowBetween>
+          <RowFixed>
+            <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
+            {'Balance: '}
+            </TYPE.black>
           </RowFixed>
           <RowFixed>
             <TYPE.black fontSize={14}>
-              {trade.tradeType === TradeType.EXACT_INPUT
-                ? slippageAdjustedAmounts[Field.OUTPUT]?.toSignificant(4) ?? '-'
-                : slippageAdjustedAmounts[Field.INPUT]?.toSignificant(4) ?? '-'}
-            </TYPE.black>
-            <TYPE.black fontSize={14} marginLeft={'4px'}>
-              {trade.tradeType === TradeType.EXACT_INPUT
-                ? trade.outputAmount.currency.symbol
-                : trade.inputAmount.currency.symbol}
+              {"ETH (NaN ETH to go"}
             </TYPE.black>
           </RowFixed>
-        </RowBetween>
-        <RowBetween>
-          <RowFixed>
-            <TYPE.black color={theme.text2} fontSize={14} fontWeight={400}>
-              Transaction Fee
-            </TYPE.black>
-            <QuestionHelper text="This is the fee paid to the Ethereum network for staking ETH." />
-          </RowFixed>
-          {true? "$36.79" : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
-        </RowBetween>
-        <RowBetween>
-          <RowFixed>
-            <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              Staking Rewards Fee
-            </TYPE.black>
-            <QuestionHelper text="This fee is split between node operators, the DAO, and an insurance fund." />
-          </RowFixed>
-          <TYPE.black fontSize={14}>
-            {realizedLPFee ? `10%`:`10%`}
-          </TYPE.black>
         </RowBetween>
       </AutoColumn>
 
