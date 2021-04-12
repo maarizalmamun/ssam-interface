@@ -5,11 +5,7 @@ import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
 import { TYPE } from 'theme'
 
-import {
-  computeTradePriceBreakdown,
-  formatExecutionPrice,
-  warningSeverity
-} from '../../utils/prices'
+import { computeTradePriceBreakdown, formatExecutionPrice, warningSeverity } from '../../utils/prices'
 import { ButtonError } from '../Button'
 import { AutoColumn } from '../Column'
 import { AutoRow, RowBetween, RowFixed } from '../Row'
@@ -61,30 +57,24 @@ export default function SwapModalFooter({
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-            {'Validator: '}
+              {'Validator: '}
             </TYPE.black>
           </RowFixed>
         </RowBetween>
         <RowBetween>
-        <TYPE.black fontSize={12}>
-              {"0xa5e7f4a06080b860d376871ce0798aa7677e7a4b117a5bd0909"}
-        </TYPE.black>
+          <TYPE.black fontSize={12}>{'0xa5e7f4a06080b860d376871ce0798aa7677e7a4b117a5bd0909'}</TYPE.black>
         </RowBetween>
         <RowBetween>
-          <TYPE.black fontSize={12}>
-              {"f15fee02f28a62388496982c133fef1eba087d8a06005"}
-          </TYPE.black>
+          <TYPE.black fontSize={12}>{'f15fee02f28a62388496982c133fef1eba087d8a06005'}</TYPE.black>
         </RowBetween>
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-            {'Balance: '}
+              {'Balance: '}
             </TYPE.black>
           </RowFixed>
           <RowFixed>
-            <TYPE.black fontSize={14}>
-              {"ETH (NaN ETH to go"}
-            </TYPE.black>
+            <TYPE.black fontSize={14}>{'ETH (NaN ETH to go'}</TYPE.black>
           </RowFixed>
         </RowBetween>
       </AutoColumn>

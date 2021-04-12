@@ -91,13 +91,14 @@ export default function Swap() {
   const [allowedSlippage] = useUserSlippageTolerance()
 
   const InfoLink = styled(ExternalLink)`
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.bg3};
-  padding: 6px 6px;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 14px;
-  color: ${({ theme }) => theme.text1};`
+    width: 100%;
+    border: 1px solid ${({ theme }) => theme.bg3};
+    padding: 6px 6px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    color: ${({ theme }) => theme.text1};
+  `
 
   // swap state
   const { independentField, typedValue, recipient } = useSwapState()
@@ -513,10 +514,7 @@ export default function Swap() {
               <ShieldText text={'Lowest Fee Guarantee'} />
             </RowBetween>
             <AutoColumn style={{ padding: '12px 16px 0 16px' }}>
-              <InfoLink
-                href={'https://www.ssam.app/'}
-                target="_blank"
-              >
+              <InfoLink href={'https://www.ssam.app/'} target="_blank">
                 View on Etherscan ↗
               </InfoLink>
             </AutoColumn>
@@ -534,13 +532,10 @@ export default function Swap() {
           </BottomGrouping>
         </Wrapper>
       </AppBody>
-      {!swapIsUnsupported ? (
-        null
-      ) : (
+      {!swapIsUnsupported ? null : (
         <UnsupportedCurrencyFooter show={swapIsUnsupported} currencies={[currencies.INPUT, currencies.OUTPUT]} />
       )}
-      <AutoColumn style={{ padding: '20px' }}>
-      </AutoColumn>
+      <AutoColumn style={{ padding: '20px' }}></AutoColumn>
       <AppBody>
         <Wrapper>
           <FAQ />
